@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:h2:./devdb
+    username: sa
+    password: 
+    driverClassName: org.h2.Driver
+  jpa:
+     hibernate:
+        ddl-auto: update
+     properties:
+        javax:
+           persistence:
+              validation:
+                 mode: none
+  data:
+     web:
+        pageable:
+           default-page-size: 10
+           max-page-size: 100
+  
+  profiles:
+     active:
+     - dev
+  servlet:
+     multipart:
+        max-file-size: 10MB
+      
+---    
+spring:
+   profiles: production
+hoaxify:
+    upload-path: storage-production
+---
+
+spring:
+   profiles: dev
+hoaxify:
+    upload-path: picture-storage
+   
+
+   
+   
